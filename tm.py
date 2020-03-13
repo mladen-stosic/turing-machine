@@ -39,7 +39,7 @@ for line in file:
 file.close()
 
 
-tape = 'b010001bb'
+tape = 'b011010011bb'
 tapelist = []
 #currchar = tapelist[1]
 
@@ -48,34 +48,39 @@ for c in tape:
 i=1
 print(states[currstate].one[2])
 while (i < len(tapelist)):
-
-
+    print("before:")
+    print(i)
+    print(tapelist)
     if (tapelist[i] == 'b'):
+
+        tapelist[i] = states[currstate].blank[1]
+        i += int(states[currstate].blank[2])
         if states[currstate].blank[0] == '+':
             print("program ended succesfully")
             print(tapelist)
             input("...")
         else:
             currstate = int(states[currstate].blank[0])
-            tapelist[i] = int(states[currstate].blank[1])
-            i += int(states[currstate].blank[2])
 
     elif (tapelist[i] == '0'):
+
+        tapelist[i] = states[currstate].zero[1]
+        i += int(states[currstate].zero[2])
         if states[currstate].zero[0] == '+':
             print("program ended succesfully")
             print(tapelist)
             input("...")
         else:
             currstate = int(states[currstate].zero[0])
-            tapelist[i] = int(states[currstate].zero[1])
-            i += int(states[currstate].zero[2])
 
     elif (tapelist[i] == '1'):
+
+        tapelist[i] = states[currstate].one[1]
+        i += int(states[currstate].one[2])
         if states[currstate].one[0] == '+':
             print("program ended succesfully")
             print(tapelist)
             input("...")
         else:
             currstate = int(states[currstate].one[0])
-            tapelist[i] = int(states[currstate].one[1])
-            i += int(states[currstate].one[2])
+    print(tapelist)
