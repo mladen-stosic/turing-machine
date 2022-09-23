@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import re
 import glob
 from tkinter import *
 from tkinter.ttk import *
